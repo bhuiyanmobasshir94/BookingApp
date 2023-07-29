@@ -3,6 +3,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("",book_slot),
-
+    path("",slots),
+    path("booking/<uuid:pk>/", book_slot)
 ]

@@ -1,14 +1,20 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="display-4">Booking System</h1>
 
-    {%for slot in slots%}
-    <p>{{slot}}</p>
-    {%endfor%}
+  <p>Available Slots:</p>
+  {%for slot in slots%}
+    {%if not slot.is_booked %}
 
-    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="slot_id", value="{{slot.id}}">
+        <!-- <input type="submit" value="Book"/>
+         -->
+        <button type="submit">{{slot}}</button>
+    </form>
+    <br>
 
-  </div>
+    {%endif%}
+  {%endfor%}
+
 </div>
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Book Slot</h1>
+<form method="post">
+  {% csrf_token %}
+  <p>Slot: {{ slot }}</p>
+  <p><input type="text" name="name" placeholder="Your Name" required /></p>
+  <p>
+    <textarea name="address" placeholder="Your Address" required></textarea>
+  </p>
+  <p>
+    <input
+      type="text"
+      name="phone_number"
+      placeholder="Phone Number"
+      required
+    />
+  </p>
+  <p>
+    <input
+      type="text"
+      name="country_code"
+      placeholder="Country Code"
+      required
+    />
+  </p>
+  <p><input type="submit" value="Book" /></p>
+</form>
+
+{% endblock %}

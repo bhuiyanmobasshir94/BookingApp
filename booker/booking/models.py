@@ -25,7 +25,7 @@ class Slot(BaseModel):
     is_booked = models.BooleanField(default=False, verbose_name=_("Is Booked"))
 
     def __str__(self) -> str:
-        return f"Date: {str(self.date)}, Time: {str(self.start_time)} to {str(self.end_time)}, Booked: {self.is_booked}"
+        return f"Date: {str(self.date)}, Time: {str(self.start_time)} to {str(self.end_time)}"
     class Meta:
         verbose_name = "Slot"
         constraints = [
@@ -71,4 +71,12 @@ class Booking(BaseModel):
     
     class Meta:
         verbose_name = "Booking"
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=["slot"],
+                name="unique_booking",
+            ),
+
+        ]
 
